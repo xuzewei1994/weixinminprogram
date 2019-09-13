@@ -1,0 +1,32 @@
+<import src="./article-item-template/article-item-template.wxml"/>
+<view>
+  <view class='search-line' style='width:{{(winWidth*0.95)-pickerWidth-5}}px'>
+      <text class='iconfont icon-sousuo3'></text>
+      <input placeholder="{{placeholder}}" placeholder-class="searchph"
+             bindinput='inputTemp' bindconfirm='handleSearch' confirm-type='search' ></input>
+  </view>
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" class="swiper-wrap">
+      <swiper-item>
+        <image class='slide-image' src="https://image14.m1905.cn/uploadfile/2019/0823/thumb_1_1000_322_20190823015726810185.jpg"/>
+      </swiper-item>
+      <swiper-item>
+        <image class='slide-image' src="http://hbimg.b0.upaiyun.com/92cccb532ea035d087f39683acef0ccd85df3d93c70c-RFQPSc_fw658"/>
+      </swiper-item>
+      <swiper-item>
+        <image class='slide-image' src="https://image11.m1905.cn/uploadfile/2019/0827/thumb_1_1000_322_20190827091451169851.jpg"/>
+      </swiper-item>        
+  </swiper>
+
+  <view class='article-wrap'>
+    <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx">
+    <!-- 绑定参数data-article-id -->
+      <view catchtap='tapArticleItem' data-article-id='{{article.articleId}}'>
+      <!-- 引入模板 -->
+      <template is="articleItem" data="{{...article}}"/>
+      </view>
+    </block>
+  </view> 
+
+</view>
+
+
